@@ -1,0 +1,21 @@
+{
+  "name": "example",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "link:../node_modules/react",
+    "react-dom": "^18.2.0",
+    "react-media-devices": "link:.."
+  },
+  "devDependencies": {
+    "@types/node": "^16.7.13",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "parcel": "^2.7.0",
+    "process": "^0.11.10",
+    "typescript": "^4.7.4"
+  },
+  "scripts": {
+    "start": "parcel src/index.html"
+  }
+}
