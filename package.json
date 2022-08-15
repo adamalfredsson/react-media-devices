@@ -11,6 +11,23 @@
     "email": "adam@zodiapps.com",
     "url": "https://zodiapps.com/"
   },
+  "homepage": "https://github.com/nomadoda/react-media-devices",
+  "keywords": [
+    "react",
+    "media-device",
+    "react-media-devices",
+    "devices",
+    "device id",
+    "MediaDevices API"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nomadoda/react-media-devices.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nomadoda/react-media-devices/issues",
+    "email": "adam@zodiapps.com"
+  },
   "files": [
     "/lib"
   ],
