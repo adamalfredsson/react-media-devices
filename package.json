@@ -4,7 +4,8 @@
   "description": "A custom hook to enumerate user media devices, using the MediaDevices API",
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
-  "types": "./lib/esm/index.d.ts",
+  "types": "./lib/index.d.ts",
+  "typings": "./lib/index.d.ts",
   "license": "MIT",
   "author": {
     "name": "Adam Alfredsson",
