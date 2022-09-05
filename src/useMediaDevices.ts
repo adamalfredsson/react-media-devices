@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
+import { useEvent } from "./useEvent";
 import { getMediaDevices } from "./utils/mediaDevices";
 
 interface UseMediaDevicesOptions {
   constraints?: MediaStreamConstraints;
-  verbose?: boolean;
+  onError?: (error: Error) => void;
 }
 
 export const useMediaDevices = ({
   constraints,
-  verbose = process.env.NODE_ENV !== "production",
+  onError = () => {},
 }: UseMediaDevicesOptions = {}) => {
   const [mediaDevices, setMediaDevices] = useState<MediaDeviceInfo[] | null>(
     null
   );
+
+  const handleError = useEvent(onError);
 
   useEffect(() => {
     const ac = new AbortController();
@@ -26,15 +29,13 @@ export const useMediaDevices = ({
       })
       .catch((error) => {
         if (error.type === "abort") return;
-        if (verbose) {
-          console.error(error);
-        }
+        handleError(error);
       });
 
     return () => {
       ac.abort();
     };
-  }, [verbose, constraints]);
+  }, [constraints, handleError]);
 
   return mediaDevices;
 };

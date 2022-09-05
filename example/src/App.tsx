@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useMediaDevices } from "../../lib/esm";
+import { useMediaDevices } from "react-media-devices";
 
 const App = () => {
   const [selectedConstraints, setSelectedConstraints] =
@@ -7,7 +7,12 @@ const App = () => {
       audio: true,
       video: false,
     });
-  const devices = useMediaDevices({ constraints: selectedConstraints });
+  const devices = useMediaDevices({
+    constraints: selectedConstraints,
+    onError: (error) => {
+      console.error(error);
+    },
+  });
 
   return (
     <div>
