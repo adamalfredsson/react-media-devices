@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useEvent } from "./useEvent";
+import { useEffect, useRef, useState } from "react";
+import useDeepCompareEffect from "use-deep-compare-effect";
 import { getMediaDevices } from "./utils/mediaDevices";
 
 interface UseMediaDevicesOptions {
@@ -15,9 +15,15 @@ export const useMediaDevices = ({
     null
   );
 
-  const handleError = useEvent(onError);
+  const errorHandlerRef = useRef<UseMediaDevicesOptions["onError"] | null>(
+    null
+  );
 
   useEffect(() => {
+    errorHandlerRef.current = onError;
+  }, [onError]);
+
+  useDeepCompareEffect(() => {
     const ac = new AbortController();
 
     new Promise<MediaDeviceInfo[]>((resolve, reject) => {
@@ -29,13 +35,13 @@ export const useMediaDevices = ({
       })
       .catch((error) => {
         if (error.type === "abort") return;
-        handleError(error);
+        errorHandlerRef.current?.(error);
       });
 
     return () => {
       ac.abort();
     };
-  }, [constraints, handleError]);
+  }, [constraints]);
 
   return mediaDevices;
 };
