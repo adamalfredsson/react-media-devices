@@ -3,3 +3,4 @@ lib/
 /example/node_modules/
 /example/dist/
 /example/.parcel-cache
+*.log
