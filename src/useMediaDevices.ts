@@ -14,10 +14,10 @@ export const useMediaDevices = ({
   const [mediaDevices, setMediaDevices] = useState<MediaDeviceInfo[] | null>(
     null
   );
-
   const errorHandlerRef = useRef<UseMediaDevicesOptions["onError"] | null>(
     null
   );
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     errorHandlerRef.current = onError;
@@ -28,6 +28,7 @@ export const useMediaDevices = ({
 
     new Promise<MediaDeviceInfo[]>((resolve, reject) => {
       ac.signal.addEventListener("abort", reject);
+      setLoading(true);
       getMediaDevices(constraints).then(resolve);
     })
       .then((devices) => {
@@ -36,6 +37,9 @@ export const useMediaDevices = ({
       .catch((error) => {
         if (error.type === "abort") return;
         errorHandlerRef.current?.(error);
+      })
+      .finally(() => {
+        setLoading(false);
       });
 
     return () => {
@@ -43,5 +47,5 @@ export const useMediaDevices = ({
     };
   }, [constraints]);
 
-  return mediaDevices;
+  return { devices: mediaDevices, loading };
 };

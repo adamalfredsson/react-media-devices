@@ -7,7 +7,7 @@ const App = () => {
       audio: true,
       video: false,
     });
-  const devices = useMediaDevices({
+  const { devices, loading } = useMediaDevices({
     constraints: selectedConstraints,
     onError: (error) => {
       console.error(error);
@@ -17,6 +17,7 @@ const App = () => {
   return (
     <div>
       <h1>react-media-devices example</h1>
+      <p>{loading ? "Loading..." : null}</p>
       <form>
         <label>
           Audio
