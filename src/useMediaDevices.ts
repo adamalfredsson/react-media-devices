@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import useDeepCompareEffect from "use-deep-compare-effect";
+import { useDeepCompareEffectNoCheck } from "use-deep-compare-effect";
 import { getMediaDevices } from "./utils/mediaDevices";
 
 interface UseMediaDevicesOptions {
@@ -23,7 +23,7 @@ export const useMediaDevices = ({
     errorHandlerRef.current = onError;
   }, [onError]);
 
-  useDeepCompareEffect(() => {
+  useDeepCompareEffectNoCheck(() => {
     const ac = new AbortController();
 
     new Promise<MediaDeviceInfo[]>((resolve, reject) => {
