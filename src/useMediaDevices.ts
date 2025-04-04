@@ -29,7 +29,11 @@ export const useMediaDevices = ({
     new Promise<MediaDeviceInfo[]>((resolve, reject) => {
       ac.signal.addEventListener("abort", reject);
       setLoading(true);
-      getMediaDevices(constraints).then(resolve);
+      getMediaDevices(constraints)
+        .then(resolve)
+        .catch((error) => {
+          errorHandlerRef.current?.(error);
+        });
     })
       .then((devices) => {
         setMediaDevices(devices);
