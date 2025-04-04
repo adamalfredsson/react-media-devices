@@ -1,6 +1,6 @@
 {
   "name": "react-media-devices",
-  "version": "1.1.5",
+  "version": "1.2.0",
   "description": "A custom hook to enumerate user media devices, using the MediaDevices API",
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
