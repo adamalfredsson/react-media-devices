@@ -12,10 +12,10 @@ export const useMediaDevices = ({
   onError = () => {},
 }: UseMediaDevicesOptions = {}) => {
   const [mediaDevices, setMediaDevices] = useState<MediaDeviceInfo[] | null>(
-    null
+    null,
   );
   const errorHandlerRef = useRef<UseMediaDevicesOptions["onError"] | null>(
-    null
+    null,
   );
   const [loading, setLoading] = useState(false);
 
