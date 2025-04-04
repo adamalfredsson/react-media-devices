@@ -47,14 +47,14 @@
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
-    "@types/react": "^18.0.17",
+    "@types/react": "^19.1.0",
     "eslint": "^8.22.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-react-app": "^7.0.1",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
-    "react": "^18.2.0",
+    "react": "^19.1.0",
     "rimraf": "^3.0.2",
     "typescript": "^5.8.2"
   },
